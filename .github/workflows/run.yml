@@ -30,13 +30,22 @@ jobs:
         echo "TAG_NAME=${TAG_NAME}" >> $GITHUB_ENV
         echo "RELEASE_NAME=${TAG_NAME} Release" >> $GITHUB_ENV
 
-    - name: Release
-      uses: softprops/action-gh-release@v2
-      with:
-        name: ${{ env.RELEASE_NAME }}
-        tag_name: ${{ env.TAG_NAME }}
-        draft: false
-        prerelease: false
-        files: proxy_cleaned.txt
-      env:
-        GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+    # - name: Release
+    #   uses: softprops/action-gh-release@v2
+    #   with:
+    #     name: ${{ env.RELEASE_NAME }}
+    #     tag_name: ${{ env.TAG_NAME }}
+    #     draft: false
+    #     prerelease: false
+    #     files: proxy_cleaned.txt
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+
+    - name: Git push assets to "release" branch
+      run: |
+        git config --local user.name "github-actions[bot]"
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git checkout -b release
+        git add proxy_cleaned.txt
+        git commit -m "${{ env.RELEASE_NAME }}"
+        git push --force --set-upstream origin release

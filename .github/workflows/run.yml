@@ -37,6 +37,5 @@ jobs:
       uses: softprops/action-gh-release@v2
       with:
         files: proxy_cleaned.txt
-        name: "Release ${{ steps.date.outputs.date }}"
       env:
         GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}

@@ -1,3 +1,5 @@
+此 fork 主要是为了筛除原项目中 proxy.txt 内存在的 "enterprise.ac.uk" 相关 url，避免 surge 因为这个 url 而崩溃。可以直接将 rules 中的 proxy.txt 替换为本项目的 release。
+
 # 简介
 
 本项目生成适用于 [**Surge**](https://nssurge.com) 的规则集（DOMAIN-SET 和 RULE-SET）。使用 GitHub Actions 北京时间每天早上 6:30 自动构建，保证规则最新。

@@ -39,4 +39,4 @@ jobs:
         files: proxy_cleaned.txt
         name: "Release ${{ steps.date.outputs.date }}"
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
